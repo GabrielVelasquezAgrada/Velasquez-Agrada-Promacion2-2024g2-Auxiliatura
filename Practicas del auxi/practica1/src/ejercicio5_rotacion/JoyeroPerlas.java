@@ -5,23 +5,24 @@ import java.util.Scanner;
 public class JoyeroPerlas {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();  // Número de filas y columnas del joyero
+        try (Scanner sc = new Scanner(System.in)) {
+			int n = sc.nextInt();  // Número de filas y columnas del joyero
 
-        int[][] joyero = new int[n][n]; // Matriz para almacenar la cantidad de perlas
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                joyero[i][j] = sc.nextInt();
-            }
-        }
+			int[][] joyero = new int[n][n]; // Matriz para almacenar la cantidad de perlas
+			for (int i = 0; i < n; i++) {
+			    for (int j = 0; j < n; j++) {
+			        joyero[i][j] = sc.nextInt();
+			    }
+			}
 
-        int rotaciones = 0; 
-        while (!ordenado(joyero)) { // Mientras el joyero no esté ordenado
-            joyero = rotar(joyero);  // Rotar el joyero 90 grados antihorario
-            rotaciones++;
-        }
+			int rotaciones = 0; 
+			while (!ordenado(joyero)) { // Mientras el joyero no esté ordenado
+			    joyero = rotar(joyero);  // Rotar el joyero 90 grados antihorario
+			    rotaciones++;
+			}
 
-        System.out.println(rotaciones); // Imprimir el número de rotaciones
+			System.out.println(rotaciones); // Imprimir el número de rotaciones
+		}
     }
 
     // Método para rotar una matriz 90 grados antihorario
